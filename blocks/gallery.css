@@ -7,7 +7,7 @@
   grid-template-rows: repeat(2, 1fr);
   gap: 15px;
 }
-.galery__card{
+.gallery__card{
   max-width: 282px;
   border-radius: 10px;
   }
@@ -17,14 +17,14 @@
     height: 282px;*/
     border-radius: 10px ;
   }
-  .gallery__card_content{
+  .gallery__card-content{
     display: flex;
     justify-content: space-between;
     background-color: #fff;
     color: #000;
     max-width: 282px;
   }
-  .gallery__card_content_text{
+  .gallery__card-content-text{
     width: 246px;
     font-family: "Inter-Black", sans-serif;
     font-weight: 900;
@@ -63,12 +63,12 @@
   grid-template-rows: repeat(3, 1fr);
   gap: 30px;
 }
-.galery__card{
+.gallery__card{
   max-width: 350px;
   border-radius: 10px;
   /*margin: 10px 0 0 30px;*/
   }
-  .gallery__card_content{
+  .gallery__card-content{
     display: flex;
     justify-content: space-between;
     background-color: #fff;
@@ -86,12 +86,12 @@
     grid-template-rows: repeat(6, 1fr);
     gap: 25px;
   }
-  .galery__card{
+  .gallery__card{
     width: 350px;
     border-radius: 10px;
     margin: auto;
     }
-     .gallery__card_content{
+     .gallery__card-content{
       display: flex;
       justify-content: space-between;
       background-color: #fff;
@@ -108,19 +108,19 @@
     grid-template-rows: repeat(6, 1fr);
     gap: 25px;
   }
-  .galery__card{
+  .gallery__card{
     width: 282px;
     border-radius: 10px;
     margin: auto;
     }
-     .gallery__card_content{
+     .gallery__card-content{
       display: flex;
       justify-content: space-between;
       background-color: #fff;
       color: #000;
       max-width: 282px;
     }
-    .gallery__card_content_text{
+    .gallery__card-content-text{
       width: 246px;
       font-family: "Inter-Black", sans-serif;
       font-weight: 900;
