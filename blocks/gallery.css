@@ -26,7 +26,7 @@
   }
   .gallery__card_content_text{
     width: 246px;
-    font-family: "Inter-Black";
+    font-family: "Inter-Black", sans-serif;
     font-weight: 900;
     font-size: 24px;
     line-height: 100%;
@@ -121,10 +121,8 @@
       max-width: 282px;
     }
     .gallery__card_content_text{
-      display: flex;
-      justify-content: center;
       width: 246px;
-      font-family: "Inter-Black";
+      font-family: "Inter-Black", sans-serif;
       font-weight: 900;
       font-size: 24px;
       line-height: 100%;
