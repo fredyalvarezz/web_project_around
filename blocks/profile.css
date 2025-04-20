@@ -1,0 +1,205 @@
+.profile{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 880px;
+  height: 120px;
+  margin: 20px auto;
+  /*margin: 50px auto auto 200px;*/
+  /*problemas al ajustar pantalla*/
+  /*margin-top: 40px;
+  margin-left: 200px;*/
+}
+
+.profile__avatar{
+  max-width: 100%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+.profile__info{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 415px;
+  height: 77px;
+  margin: 15px 0 0 30px;
+}
+.profile__info-name{
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  margin: 0;
+  width: 343px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+}
+.profile__info-details{
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+
+}
+.profile__info-edit-button{
+  width: 24px;
+  height: 24px;
+  background-color: #000;
+  border: 2px solid #fff;
+  margin: 15px 19px 0 18px;
+
+}
+.profile__info-edit-button:hover{
+  opacity: 60%;
+}
+.profile__info-edit-button-img{
+  width: 10px;
+  height: 10px;
+  align-items: center;
+
+}
+.profile__info-add-button{
+  width: 150px;
+  height: 50px;
+  background-color: #000;
+  border: 2px solid #fff;
+  margin: 30px 0 0 auto;
+}
+.profile__info-add-button:hover{
+  opacity: 60%;
+}
+
+.profile__info-add-button-img{
+  width: 22px;
+  height: 22px;
+  align-items: center;
+
+}
+
+@media screen and (max-width:610px) {
+  .profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 282px;
+    margin: 100px auto;
+  }
+
+  .profile__avatar{
+    max-width: 100%;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: auto;
+  }
+  .profile__info{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 282px;
+    height: 50px;
+    margin: 15px 0 0 30px;
+  }
+  .profile__info-name{
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 48px;
+    margin: 0;
+    width: 196px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+  }
+  .profile__info-details{
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+
+  }
+  .profile__info-edit-button{
+    width: 24px;
+    height: 24px;
+    background-color: #000;
+    border: 2px solid #fff;
+    margin: 10px 10px;
+
+  }
+
+  .profile__info-add-button{
+    width: 282px;
+    height: 50px;
+    background-color: #000;
+    border: 2px solid #fff;
+    margin: 15% auto;
+  }
+}
+
+@media screen and (max-width:390px) {
+  .profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 282px;
+    margin: 100px auto;
+  }
+
+  .profile__avatar{
+    max-width: 100%;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: auto;
+  }
+  .profile__info{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 282px;
+    height: 50px;
+    margin: 15px 0 0 30px;
+  }
+  .profile__info-name{
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 100%;
+    margin: 0;
+    width: 196px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+  }
+  .profile__info-details{
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+    padding-left: 35px;
+
+  }
+  .profile__info-edit-button{
+    width: 24px;
+    height: 24px;
+    background-color: #000;
+    border: 2px solid #fff;
+    margin: 0 10px;
+
+  }
+
+  .profile__info-add-button{
+    width: 282px;
+    height: 50px;
+    background-color: #000;
+    border: 2px solid #fff;
+    margin: 15% auto;
+  }
+}

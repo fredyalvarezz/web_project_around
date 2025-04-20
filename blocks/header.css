@@ -1,0 +1,30 @@
+.header{
+  margin: auto;
+  padding-top: 30px;
+  border-bottom: 1px solid #545454;
+  width: 880px;
+  height: 74px;
+  max-width: 100%;
+}
+.header__img{
+  width: 173px;
+  height: 33px;
+
+}
+@media screen and (max-width:390px) {
+  .header{
+    margin: auto;
+    padding-top: 30px;
+    padding-left: 15px;
+    border-bottom: 1px solid #545454;
+    width: 300px;
+    height: 40px;
+    max-width: 95%;
+  }
+  .header__img{
+    width: 126px;
+    height: 24px;
+
+  }
+
+}

@@ -1,0 +1,11 @@
+.content{
+  box-sizing: border-box;
+
+}
+@media screen and (max-width:800px) {
+  .content{
+    box-sizing: border-box;
+
+  }
+
+}
