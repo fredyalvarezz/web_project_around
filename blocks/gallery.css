@@ -4,7 +4,7 @@
   margin: 50px auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   gap: 15px;
 }
 .gallery__card{
@@ -15,9 +15,10 @@
   }
   .gallery__card-picture{
     width: 100%;
+    max-height: 282px;
     /*width: 282px;
     height: 282px;*/
-    border-radius: 10px 0 0;
+    border-radius: 10px 10px 0 0;
   }
   .gallery__card-content{
     display: flex;
@@ -62,7 +63,7 @@
   margin: 50px auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   gap: 30px;
 }
 .gallery__card{
@@ -85,7 +86,7 @@
     margin: 50px auto;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: repeat(9, 1fr);
     gap: 25px;
   }
   .gallery__card{
