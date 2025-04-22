@@ -20,7 +20,7 @@ function savechange(e){
   e.preventDefault();
   profname.textContent=inputname.value;
   profabout.textContent=inputabout.value;
+  openedit();
 }
-
 form.addEventListener("submit", savechange);
 
