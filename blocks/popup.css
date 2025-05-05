@@ -23,12 +23,13 @@
 }
 .popup__button-closed{
   font-size: 35px;
-  background-color: #000;
+
   color: #fff;
   border-style: none;
   position: fixed;
-  top: 24%;
+  top: 20%;
   left: 65%;
+  background: none;
 
 }
 .popup__button-closed:hover{
@@ -87,6 +88,16 @@
 .popup__container-save:hover{
   opacity: 80%;
 }
+
+
+
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------*/
+/*Poppu Añadir*/
+
+
+
+
 /*
 @media screen and (max-width:715px) {
 

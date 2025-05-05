@@ -11,27 +11,47 @@
   <link rel="shortcut icon" href="./favicon.ico" />
 </head>
 <body>
+
   <div class="page">
     <header class="header">
       <img src="./images/Vector.png" alt="Title Picture" class="header__img">
     </header>
-    <div class="popup">
+    <!--Editar perfil de usuario-->
 
-      <button type="button" class="popup__button-closed">X</button>
+    <div class="popup" id="popup">
+      <button type="button" class="popup__button-closed" id="popup__button-closed">X</button>
 
-      <form class="popup__container">
-        <h2 class="popup__container-text">Editar perfil</h2>
+      <form class="popup__container" id="popup__container">
+        <h2 class="popup__container-text" id="popup__container-text">Editar perfil</h2>
+        <fieldset class="popup__container-form" id="popup__container-form">
+          <input type="text" placeholder="Nombre" class="popup__input" id="popup__input-name">
+          <input type="text" placeholder="Acerca de mí" class="popup__input" id="popup__input-about">
+        </fieldset>
+
+          <fieldset class="popup__container-button" id="popup__container-button">
+            <button type="submit" class="popup__container-save" id="popup__container-save">Guardar</button>
+          </fieldset>
+      </form>
+    </div>
+
+    <!--Agregar fotos-->
+    <div class="popup" id="popup-add">
+      <button type="button" class="popup__button-closed" id="popup__button-closed-add">X</button>
+
+      <form class="popup__container" id="popup__container-add">
+        <h2 class="popup__container-text">Nuevo lugar</h2>
         <fieldset class="popup__container-form">
-          <input type="text" placeholder="Nombre" class="popup__input popup__input-name">
-          <input type="text" placeholder="Acerca de mí" class="popup__input popup__input-about">
+          <input type="text" placeholder="Titulo" class="popup__input" id="popup__input-title">
+          <input type="text" placeholder="Enlace a la imagen" class="popup__input" id="popup__input-imgurl">
         </fieldset>
 
           <fieldset class="popup__container-button">
             <button type="submit" class="popup__container-save">Guardar</button>
           </fieldset>
       </form>
-
     </div>
+
+
     <main class="content">
       <section class="profile">
         <img src="./images/Perfil.jpg" alt="profile picture" class="profile__avatar">
@@ -43,92 +63,31 @@
           </button>
           <p class="profile__info-details">Estudiante</p>
         </div>
-        <button class="profile__info-add-button">
+        <button class="profile__info-add-button" type="button">
           <img src="./images/add-button.png" alt="add button" class="profile__info-add-button-img">
         </button>
       </section>
 
-      <section class="gallery">
+      <section class="gallery" id="galleryzone">
 
-        <div class="gallery__card">
-          <img src="./images/Moab.JPEG" alt="Arcos Utah" class="gallery__card-picture">
-          <div class="gallery__card-content">
-            <p class="gallery__card-content-text">Arches, Moab, Utah</p>
-            <button class="gallery__card-like-button"><img src="./images/like-heart.png" alt="like" class="gallery__card-like-picture"></button>
-          </div>
-        </div>
-
-          <div class="gallery__card">
-            <img src="./images/LA.JPEG" alt="Los Angeles Picture" class="gallery__card-picture">
-            <div class="gallery__card-content">
-              <p class="gallery__card-content-text">Walk Of Fame, L.A</p>
-              <button class="gallery__card-like-button"><img src="./images/like-heart.png" alt="like" class="gallery__card-like-picture"></button>
-            </div>
-          </div>
-
-            <div class="gallery__card">
-              <img src="./images/Vegas.JPEG" alt="Las Vegas" class="gallery__card-picture">
-              <div class="gallery__card-content">
-                <p class="gallery__card-content-text">Las Vegas, Nevada</p>
-                <button class="gallery__card-like-button"><img src="./images/like-heart.png" alt="like" class="gallery__card-like-picture"></button>
-              </div>
-            </div>
-
-        <div class="gallery__card">
-          <img src="./images/Valley.jpg" alt="Valley picture" class="gallery__card-picture">
-          <div class="gallery__card-content">
-            <p class="gallery__card-content-text">Valle de Yosemite</p>
-            <button class="gallery__card-like-button"><img src="./images/like-heart.png" alt="like" class="gallery__card-like-picture"></button>
-          </div>
-        </div>
-
-
-          <div class="gallery__card">
-            <img src="./images/lake.png" alt="lake Louise picture" class="gallery__card-picture">
-            <div class="gallery__card-content">
-              <p class="gallery__card-content-text">Lago Louise</p>
-              <button class="gallery__card-like-button"><img src="./images/like-heart.png" alt="like" class="gallery__card-like-picture"></button>
-            </div>
-          </div>
-
-            <div class="gallery__card">
-              <img src="./images/mountains.png" alt="Mountain Calvas picture" class="gallery__card-picture">
-              <div class="gallery__card-content">
-                <p class="gallery__card-content-text">Montañas Calvas</p>
-                <button class="gallery__card-like-button"><img src="./images/like-heart.png" alt="like" class="gallery__card-like-picture"></button>
-              </div>
-            </div>
-
-              <div class="gallery__card">
-                <img src="./images/latemar.png" alt="Latemar picture" class="gallery__card-picture">
-                <div class="gallery__card-content">
-                  <p class="gallery__card-content-text">Latemar</p>
-                  <button class="gallery__card-like-button"><img src="./images/like-heart.png" alt="like" class="gallery__card-like-picture"></button>
-                </div>
-              </div>
-
-                <div class="gallery__card">
-                  <img src="./images/riveredge.png" alt="River National picture" class="gallery__card-picture">
-                  <div class="gallery__card-content">
-                    <p class="gallery__card-content-text">Vanois National park river</p>
-                    <button class="gallery__card-like-button"><img src="./images/like-heart.png" alt="like" class="gallery__card-like-picture"></button>
-                  </div>
-                </div>
-
-                  <div class="gallery__card">
-                    <img src="./images/riverandcanoe.png" alt="River di Braies picture" class="gallery__card-picture">
-                    <div class="gallery__card-content">
-                      <p class="gallery__card-content-text">Lago di Braies</p>
-                      <button class="gallery__card-like-button"><img src="./images/like-heart.png" alt="like" class="gallery__card-like-picture"></button>
-                    </div>
-                  </div>
       </section>
-
     </main>
     <footer class="footer">
       <p class="footer-author">&#169; 2025. Around the US.</p>
     </footer>
   </div>
+
+  <template id="gallery-template">
+    <div class="gallery__card">
+      <button class="galley__card-button-delete"><img src="https://img.icons8.com/serif/32/trash.png" alt="trash"/> </button>
+      <img src="" alt="" class="gallery__card-picture">
+      <div class="gallery__card-content">
+        <p class="gallery__card-content-text"></p>
+        <button class="gallery__card-like-button"><img src="https://img.icons8.com/ios/50/like--v1.png" alt="like" class="gallery__card-like-picture"></button>
+
+      </div>
+    </div>
+  </template>
   <script src="./scripts/index.js"></script>
 
 </body>

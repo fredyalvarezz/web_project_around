@@ -7,6 +7,14 @@
   grid-template-rows: repeat(3, 1fr);
   gap: 15px;
 }
+.galley__card-button-delete{
+  display: flex;
+  position: absolute;
+  margin: 10px 0 0 230px;
+  background:none;
+  border-style: none;
+
+}
 .gallery__card{
   max-width: 282px;
   border-radius: 10px;
@@ -15,11 +23,46 @@
   }
   .gallery__card-picture{
     width: 100%;
-    max-height: 282px;
-    /*width: 282px;
-    height: 282px;*/
+    /*max-height: 282px;*/
+    /*width: 282px;*/
+    height: 282px;
     border-radius: 10px 10px 0 0;
   }
+  /*
+  Se derparece el icono de eliminar
+  .gallery__card-picture:hover{
+    opacity: 80%;
+  }
+    */
+
+  .gallery__card-picture-big{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 816px;
+    height: 540px;
+    position: fixed;
+    top: 96px;
+    right: 17%;
+    z-index: 2;
+
+  }
+  .gallery__card-content-text-big{
+    width: 246px;
+    font-family: "Inter-Black", sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-left: 5%;
+    position: fixed;
+    top: 1%;
+    color: #fff;
+
+  }
+
   .gallery__card-content{
     display: flex;
     justify-content: space-between;
@@ -54,7 +97,12 @@
     height: 17px;
   }
   .gallery__card-like-picture:hover{
-    opacity: 50%;}
+    opacity: 50%;
+  }
+  .like{
+    background-image: url("https://img.icons8.com/ios-filled/50/like--v1.png");
+    background-size: cover;
+  }
 
 
 @media screen and (max-width:900px){
