@@ -69,7 +69,7 @@ function createCard(card) {
   const cloneContent = cloneCard.querySelector(".gallery__card");
 
   //Seleccionar elementos del DOM
-  const btnDelete = cloneContent.querySelector(".galley__card-button-delete");
+  const btnDelete = cloneContent.querySelector(".gallery__card-button-delete");
   const cardImg = cloneContent.querySelector(".gallery__card-picture");
   const cardName = cloneContent.querySelector(".gallery__card-content-text");
   const btnLike = cloneContent.querySelector(".gallery__card-like-button");
@@ -94,7 +94,7 @@ function createCard(card) {
     //ocultar boton like
     btnLike.classList.toggle("gallery__card-like-button-hiden");
     //ocultar boton trash
-    btnDelete.classList.toggle("galley__card-button-delete-hiden");
+    btnDelete.classList.toggle("gallery__card-button-delete-hiden");
 
   });
 

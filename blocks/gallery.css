@@ -7,7 +7,7 @@
   grid-template-rows: repeat(2, 1fr);
   gap: 15px;
 }
-.galley__card-button-delete{
+.gallery__card-button-delete{
   display: flex;
   position: absolute;
   margin: 10px 0 0 230px;
@@ -16,10 +16,10 @@
   width: 18px;
   height: 20px;
 }
-.galley__card-button-delete:hover{
+.gallery__card-button-delete:hover{
   opacity: 30%;
 }
-.galley__card-button-delete-hiden{
+.gallery__card-button-delete-hiden{
   display: none;
 }
 .gallery__card{
@@ -130,7 +130,7 @@
   grid-template-rows: repeat(5, 1fr);
   gap: 30px;
 }
-.galley__card-button-delete{
+.gallery__card-button-delete{
   display: flex;
   position: absolute;
   margin: 10px 0 0 230px;
@@ -151,10 +151,7 @@
     color: #000;
     max-width: 350px;
   }
-  .gallery__card-content-hiden{
-    display:flex;
-    background-color: #000;
-  }
+
   .gallery__card-picture-big{
     display:flex;
     justify-content: center;
@@ -173,7 +170,13 @@
     left: 11%;
 
   }
-
+  .gallery__card-content-hiden{
+    display:flex;
+    background-color: #000;
+  }
+  .gallery__card-button-delete-hiden{
+    display: none;
+  }
 
 }
 
