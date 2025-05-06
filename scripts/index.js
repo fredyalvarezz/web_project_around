@@ -74,6 +74,9 @@ function createCard(card) {
   const cardName = cloneContent.querySelector(".gallery__card-content-text");
   const btnLike = cloneContent.querySelector(".gallery__card-like-button");
   const btnlikeblack = cloneContent.querySelector(".gallery__card-like-picture")
+  const textimg = cloneContent.querySelector(".gallery__card-content-text");
+  const contenttext = cloneContent.querySelector(".gallery__card-content");
+
 
 
   //manipulacion del DOM
@@ -84,6 +87,15 @@ function createCard(card) {
   //Hacer grande la foto
   cardImg.addEventListener("click", () =>{
     cardImg.classList.toggle("gallery__card-picture-big");
+    //hacer el titulo mas grande y aparecer debajo de la foto
+    textimg.classList.toggle("gallery__card-content-text-big");
+    //ocultar contenido con fondo negro
+    contenttext.classList.toggle("gallery__card-content-hiden");
+    //ocultar boton like
+    btnLike.classList.toggle("gallery__card-like-button-hiden");
+    //ocultar boton trash
+    btnDelete.classList.toggle("galley__card-button-delete-hiden");
+
   });
 
   //like
