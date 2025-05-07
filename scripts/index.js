@@ -1,13 +1,13 @@
 //Editar Perfil
-let btnedit = document.querySelector(".profile__info-edit-button");
-let popup = document.querySelector("#popup");
-let btnclosed = document.querySelector("#popup__button-closed");
-let form = document.querySelector("#popup__container");
-let inputname = document.querySelector("#popup__input-name");
-let inputabout = document.querySelector("#popup__input-about");
-let profname = document.querySelector(".profile__info-name");
-let profabout = document.querySelector(".profile__info-details");
-let butsave = document.querySelector("#popup__container-save");
+const btnedit = document.querySelector(".profile__info-edit-button");
+const popup = document.querySelector("#popup");
+const btnclosed = document.querySelector("#popup__button-closed");
+const form = document.querySelector("#popup__container");
+const inputname = document.querySelector("#popup__input-name");
+const inputabout = document.querySelector("#popup__input-about");
+const profname = document.querySelector(".profile__info-name");
+const profabout = document.querySelector(".profile__info-details");
+const butsave = document.querySelector("#popup__container-save");
 
 function openedit() {
   inputname.value = profname.textContent;
@@ -126,9 +126,9 @@ renderCards();
 
 
 //Abrir agregar nuevos lugares
-let btnadd = document.querySelector(".profile__info-add-button");
-let popupadd = document.querySelector("#popup-add");
-let btnclosedadd = document.querySelector("#popup__button-closed-add");
+const btnadd = document.querySelector(".profile__info-add-button");
+const popupadd = document.querySelector("#popup-add");
+const btnclosedadd = document.querySelector("#popup__button-closed-add");
 
 function openadd() {
   popupadd.classList.toggle("popup__opened");
