@@ -76,6 +76,8 @@ function createCard(card) {
   const btnlikeblack = cloneContent.querySelector(".gallery__card-like-picture")
   const textimg = cloneContent.querySelector(".gallery__card-content-text");
   const contenttext = cloneContent.querySelector(".gallery__card-content");
+  const btnclosedimg =  cloneContent.querySelector(".gallery__img-closed");
+
 
 
 
@@ -85,18 +87,42 @@ function createCard(card) {
   cardImg.alt = card.name;
 
   //Hacer grande la foto
+
   cardImg.addEventListener("click", () =>{
-    cardImg.classList.toggle("gallery__card-picture-big");
+    //al hacer click se hace mas grande la imagen
+    cardImg.classList.add("gallery__card-picture-big");
+    //contendor de la imagen mas grande con la spropiedades del texto
+    cloneContent.classList.add("gallery__popup-img");
+    //boton cerrar aparece
+    btnclosedimg.classList.add("gallery__img-closed-show");
     //hacer el titulo mas grande y aparecer debajo de la foto
-    textimg.classList.toggle("gallery__card-content-text-big");
-    //ocultar contenido con fondo negro
-    contenttext.classList.toggle("gallery__card-content-hiden");
+    textimg.classList.add("gallery__card-content-text-big");
+    //contenedor del texto
+    contenttext.classList.add("gallery__card-content-big");
     //ocultar boton like
-    btnLike.classList.toggle("gallery__card-like-button-hiden");
+    btnLike.classList.add("gallery__card-like-button-hiden");
     //ocultar boton trash
-    btnDelete.classList.toggle("gallery__card-button-delete-hiden");
+    btnDelete.classList.add("gallery__card-button-delete-hiden");
 
   });
+  btnclosedimg.addEventListener("click", () =>{
+     //al hacer click se hace mas grande la imagen
+     cardImg.classList.remove("gallery__card-picture-big");
+     //contendor de la imagen mas grande con la spropiedades del texto
+     cloneContent.classList.remove("gallery__popup-img");
+     //boton cerrar aparece
+     btnclosedimg.classList.remove("gallery__img-closed-show");
+     //hacer el titulo mas grande y aparecer debajo de la foto
+     textimg.classList.remove("gallery__card-content-text-big");
+     //contenedor del texto
+     contenttext.classList.remove("gallery__card-content-big");
+     //ocultar boton like
+     btnLike.classList.remove("gallery__card-like-button-hiden");
+     //ocultar boton trash
+     btnDelete.classList.remove("gallery__card-button-delete-hiden");
+
+  });
+
 
   //like
   btnLike.addEventListener("click", () =>{
@@ -123,6 +149,8 @@ function renderCards() {
   });
 }
 renderCards();
+
+
 
 
 //Abrir agregar nuevos lugares

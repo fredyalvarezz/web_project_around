@@ -1,5 +1,5 @@
 .header{
-  margin: auto;
+  margin: 30px auto;
   padding-top: 30px;
   border-bottom: 1px solid #545454;
   width: 880px;
@@ -11,13 +11,73 @@
   height: 33px;
 
 }
-@media screen and (max-width:390px) {
+
+@media screen  and (max-width:930px) {
   .header{
-    margin: auto;
+    margin: 30px 30px;
+    padding-top: 30px;
+    width: 730px;
+
+    border-bottom: 1px solid #545454;
+    height: 74px;
+    max-width: 100%;
+  }
+
+}
+@media screen  and (max-width:810px) {
+  .header{
+    width: 650px;
+  }
+
+}
+@media screen  and (max-width:740px) {
+  .header{
+    width: 600px;
+  }
+
+}
+@media screen  and (max-width:680px) {
+  .header{
+    width: 500px;
+  }
+  .header__img{
+    width: 150px;
+    height: 30px;
+
+  }
+
+}
+@media screen  and (max-width:610px) {
+  .header{
+    width: 455px;
+  }
+
+}
+@media screen  and (max-width:550px) {
+  .header{
+    width: 390px;
+  }
+
+}
+@media screen  and (max-width:475px) {
+  .header{
+    width: 320px;
+  }
+
+}
+@media screen  and (max-width:415px) {
+  .header{
+    width: 270px;
+  }
+
+}
+@media screen and (max-width:320px) {
+  .header{
+    margin: 30px 30px;
     padding-top: 30px;
     padding-left: 15px;
     border-bottom: 1px solid #545454;
-    width: 300px;
+    width: 250px;
     height: 40px;
     max-width: 95%;
   }

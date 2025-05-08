@@ -66,7 +66,7 @@
   height: 50px;
   background-color: #000;
   border: 2px solid #fff;
-  margin: 30px 0 0 auto;
+  margin: 30px 10px 0 auto;
 }
 .profile__info-add-button:hover{
   opacity: 60%;
@@ -76,6 +76,43 @@
   width: 22px;
   height: 22px;
   align-items: center;
+
+}
+@media screen  and (max-width:930px) {
+  .profile{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 880px;
+    height: 120px;
+    margin: 0 30px;
+    /*margin: 50px auto auto 200px;*/
+    /*problemas al ajustar pantalla*/
+    /*margin-top: 40px;
+    margin-left: 200px;*/
+  }
+  .profile__info-add-button{
+    width: 130px;
+    height: 50px;
+    background-color: #000;
+    border: 2px solid #fff;
+    margin: 30px 30px 0 0;
+  }
+  .profile__info-name{
+    width: 320px;
+
+  }
+
+
+
+}
+
+@media  screen and (max-width:713px) {
+  .profile__info-name{
+    width: 300px;
+
+
+  }
 
 }
 
@@ -107,7 +144,7 @@
   .profile__info-name{
     font-family: "Inter", sans-serif;
     font-weight: 500;
-    font-size: 42px;
+    font-size: 30px;
     line-height: 48px;
     margin: 0;
     width: 196px;
@@ -137,7 +174,7 @@
     height: 50px;
     background-color: #000;
     border: 2px solid #fff;
-    margin: 15% auto;
+    margin: 20% auto;
   }
 }
 
@@ -164,7 +201,8 @@
     flex-wrap: wrap;
     width: 282px;
     height: 50px;
-    margin: 15px 0 0 30px;
+    margin-top: 10px;
+    margin-left: 0px;
   }
   .profile__info-name{
     font-family: "Inter", sans-serif;
@@ -176,6 +214,8 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
 
   }
   .profile__info-details{
@@ -184,6 +224,7 @@
     font-size: 18px;
     line-height: 100%;
     padding-left: 35px;
+    justify-content: center;
 
   }
   .profile__info-edit-button{
@@ -191,12 +232,12 @@
     height: 24px;
     background-color: #000;
     border: 2px solid #fff;
-    margin: 0 10px;
+    margin: 0;
 
   }
 
   .profile__info-add-button{
-    width: 282px;
+    width: 280px;
     height: 50px;
     background-color: #000;
     border: 2px solid #fff;

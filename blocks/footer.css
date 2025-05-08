@@ -7,16 +7,31 @@
   line-height: 100%;
   padding: 50px 0 30px 0;
 }
-
+@media screen and (max-width:1200px) {
+  .footer{
+  margin-left: 100px;
+  }
+}
+@media screen and (max-width:1000px) {
+  .footer{
+  margin-left: 40px;
+  }
+}
 @media screen and (max-width:610px){
   .footer{
-    max-width: 282px;
-    margin-left: 19px;
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 100%;
-    padding: 30px 0 20px 0;
+    margin-left: 100px;
+  }
+
+}
+@media screen and (max-width:550px){
+  .footer{
+    margin-left: 70px;
+  }
+
+}
+@media screen and (max-width:400px){
+  .footer{
+    margin-left: 50px;
   }
 
 }
