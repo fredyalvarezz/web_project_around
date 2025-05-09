@@ -81,11 +81,11 @@
 @media screen  and (max-width:930px) {
   .profile{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
     max-width: 880px;
     height: 120px;
-    margin: 0 30px;
+    margin: 0 55px;
     /*margin: 50px auto auto 200px;*/
     /*problemas al ajustar pantalla*/
     /*margin-top: 40px;

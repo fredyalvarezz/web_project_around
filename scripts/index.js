@@ -1,4 +1,4 @@
-//Editar Perfil
+//Seleccionar elementos del DOM
 const btnedit = document.querySelector(".profile__info-edit-button");
 const popup = document.querySelector("#popup");
 const btnclosed = document.querySelector("#popup__button-closed");
@@ -9,6 +9,8 @@ const profname = document.querySelector(".profile__info-name");
 const profabout = document.querySelector(".profile__info-details");
 const butsave = document.querySelector("#popup__container-save");
 
+
+//Editar Perfil
 function openedit() {
   inputname.value = profname.textContent;
   inputabout.value = profabout.textContent;
@@ -141,6 +143,7 @@ function createCard(card) {
 
 
 //foreach
+//Renders de las cartas para que aparezcan
 //Definicion de la funcion
 function renderCards() {
   initialCards.forEach((card) => {

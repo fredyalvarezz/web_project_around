@@ -129,7 +129,6 @@
   .gallery__card-content-text-big{
     max-width: 816px;
     font-size: 24px;
-    overflow: visible;
     margin-left: 0%;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -203,11 +202,9 @@
   .gallery__card-content-text-big{
     max-width: 700px;
     font-size: 24px;
-    overflow: visible;
     margin-left: 0%;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;
 
   }
   .gallery__card-button-delete{
@@ -302,7 +299,6 @@
   .gallery__card-content-text-big{
     max-width: 550px;
     font-size: 24px;
-    overflow: visible;
     margin-left: 0%;
 
   }
@@ -363,11 +359,9 @@
     .gallery__card-content-text-big{
       max-width: 500px;
       font-size: 24px;
-      overflow: visible;
       margin-left: 0%;
       text-overflow: ellipsis;
       white-space: nowrap;
-      overflow: hidden;
 
     }
     .gallery__img-closed-show{
@@ -438,11 +432,9 @@
     .gallery__card-content-text-big{
       max-width: 450px;
       font-size: 24px;
-      overflow: visible;
       margin-left: 0%;
       text-overflow: ellipsis;
       white-space: nowrap;
-      overflow: hidden;
 
     }
     .gallery__img-closed-show{
@@ -490,11 +482,9 @@
         .gallery__card-content-text-big{
           max-width: 400px;
           font-size: 24px;
-          overflow: visible;
           margin-left: 0%;
           text-overflow: ellipsis;
           white-space: nowrap;
-          overflow: hidden;
 
         }
         .gallery__img-closed-show{
@@ -543,11 +533,9 @@
         .gallery__card-content-text-big{
           max-width: 280px;
           font-size: 24px;
-          overflow: visible;
           margin-left: 0%;
           text-overflow: ellipsis;
           white-space: nowrap;
-          overflow: hidden;
 
         }
         .gallery__img-closed-show{
@@ -629,7 +617,6 @@
         .gallery__card-content-text-big{
           max-width: 240px;
           font-size: 24px;
-          overflow: visible;
           margin-left: 0%;
 
         }

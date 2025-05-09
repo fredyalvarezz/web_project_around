@@ -13,9 +13,9 @@
 
 @media screen  and (max-width:930px) {
   .header{
-    margin: 30px 30px;
+    margin: 30px 77px;
     padding-top: 30px;
-    width: 730px;
+    width: 718px;
 
     border-bottom: 1px solid #545454;
     height: 74px;
@@ -25,13 +25,13 @@
 }
 @media screen  and (max-width:810px) {
   .header{
-    width: 650px;
+    width: 640px;
   }
 
 }
 @media screen  and (max-width:740px) {
   .header{
-    width: 600px;
+    width: 588px;
   }
 
 }
@@ -54,35 +54,36 @@
 }
 @media screen  and (max-width:550px) {
   .header{
-    width: 390px;
+    width: 380px;
   }
 
 }
 @media screen  and (max-width:475px) {
   .header{
-    width: 320px;
+    width: 318px;
   }
 
 }
 @media screen  and (max-width:415px) {
   .header{
-    width: 270px;
-  }
-
-}
-@media screen and (max-width:320px) {
-  .header{
     margin: 30px 30px;
     padding-top: 30px;
     padding-left: 15px;
     border-bottom: 1px solid #545454;
-    width: 250px;
+    width: 260px;
     height: 40px;
     max-width: 95%;
   }
   .header__img{
     width: 126px;
     height: 24px;
+
+  }
+
+}
+@media screen and (max-width:320px) {
+  .header{
+    width: 250px;
 
   }
 
