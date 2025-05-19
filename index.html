@@ -22,15 +22,23 @@
       <div class="popup__container-all">
       <button type="button" class="popup__button-closed" id="popup__button-closed">X</button>
 
-      <form class="popup__container" id="popup__container">
+      <form class="popup__container popup__form" id="popup__container">
         <h2 class="popup__container-text" id="popup__container-text">Editar perfil</h2>
         <fieldset class="popup__container-form" id="popup__container-form">
-          <input type="text" placeholder="Nombre" class="popup__input" id="popup__input-name">
-          <input type="text" placeholder="Acerca de mí" class="popup__input" id="popup__input-about">
+          <input type="text" placeholder="Nombre" class="popup__input" id="popup__input-name"
+          required
+          minlength="2"
+          maxlength="40">
+          <span class="form__input-error" id="name-input-error"></span>
+          <input type="text" placeholder="Acerca de mí" class="popup__input" id="popup__input-about"
+          required
+          minlength="2"
+          maxlength="200">
+          <span class="form__input-error" id="about-input-error"></span>
         </fieldset>
 
           <fieldset class="popup__container-button" id="popup__container-button">
-            <button type="submit" class="popup__container-save" id="popup__container-save">Guardar</button>
+            <button type="submit" class="popup__container-save popup__button" id="popup__container-save">Guardar</button>
           </fieldset>
       </form>
     </div>
@@ -41,15 +49,21 @@
       <div class="popup__container-all">
       <button type="button" class="popup__button-closed" id="popup__button-closed-add">X</button>
 
-      <form class="popup__container" id="popup__container-add">
+      <form class="popup__container popup__form" id="popup__container-add">
         <h2 class="popup__container-text">Nuevo lugar</h2>
         <fieldset class="popup__container-form">
-          <input type="text" placeholder="Titulo" class="popup__input" id="popup__input-title">
-          <input type="text" placeholder="Enlace a la imagen" class="popup__input" id="popup__input-imgurl">
+          <input type="text" placeholder="Titulo" class="popup__input" id="popup__input-title"
+          required
+          minlength="2"
+          maxlength="30">
+          <span class="form__input-error" id="title-input-error"></span>
+          <input type="url" placeholder="Enlace a la imagen" class="popup__input" id="popup__input-imgurl"
+          required>
+          <span class="form__input-error" id="img-input-error"></span>
         </fieldset>
 
           <fieldset class="popup__container-button">
-            <button type="submit" class="popup__container-save">Guardar</button>
+            <button type="submit" class="popup__container-save popup__button">Guardar</button>
           </fieldset>
       </form>
     </div>
@@ -92,7 +106,8 @@
       </div>
     </div>
   </template>
-  <script src="./scripts/index.js"></script>
+  <script type="module" src="./scripts/index.js"></script>
+  <script type="module" src="./scripts/validate.js"></script>
 
 </body>
 </html>

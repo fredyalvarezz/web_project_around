@@ -96,3 +96,20 @@
 .popup__container-save:hover{
   opacity: 80%;
 }
+/*********************************************************/
+/*Errores*/
+.popup__input_type_error{
+  border-color: red;
+}
+.error{
+  display: block;
+  color: red;
+  font-size: 12px;
+}
+.error-visible{
+  display: block;
+}
+.popup__button_disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
+}
