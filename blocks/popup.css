@@ -1,5 +1,5 @@
-.popup{
- display: none;
+.popup {
+  display: none;
   justify-content: center;
   flex-direction: row-reverse;
   align-items: flex-start;
@@ -9,41 +9,44 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
-  position:fixed;
+  position: fixed;
   align-content: center;
   top: 0;
   left: 0;
 
 }
-.popup__opened{
+
+.popup__opened {
   display: flex;
   justify-content: center;
   align-items: center;
 
 }
-.popup__button-closed{
-    display: flex;
-    font-size: 30px;
-    justify-content: end;
-    background: none;
-    color: #fff;
-    border-style: none;
-    margin-right: 5%;
+
+.popup__button-closed {
+  display: flex;
+  font-size: 30px;
+  justify-content: end;
+  background: none;
+  color: #fff;
+  border-style: none;
+  margin-right: 5%;
 
 }
-.popup__button-closed:hover{
+
+.popup__button-closed:hover {
   opacity: 80%;
 }
 
-.popup__container{
+.popup__container {
   max-width: 430px;
   background-color: #fff;
   color: #000;
   border-radius: 10px;
 }
 
-.popup__container-all{
-  display:flex;
+.popup__container-all {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   max-width: 430px;
@@ -55,7 +58,8 @@
   z-index: 2;
 
 }
-.popup__container-text{
+
+.popup__container-text {
   font-family: "Inter-Black", sans-serif;
   font-weight: 900;
   font-size: 24px;
@@ -63,26 +67,30 @@
   max-width: 330px;
   margin: 35px 27px auto;
 }
-.popup__container-form{
+
+.popup__container-form {
   display: flex;
   flex-direction: column;
   border-style: none;
 
 }
-.popup__input{
+
+.popup__input {
   margin: 20px 15px;
   border-style: none;
   font-size: 14px;
   border-bottom: 1px solid #000;
   max-width: 358px;
 }
-.popup__container-button{
+
+.popup__container-button {
   border-style: none;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.popup__container-save{
+
+.popup__container-save {
   max-width: 358px;
   width: calc(100% - 20px);
   margin: 10px 0 15px 0;
@@ -93,23 +101,28 @@
   color: #fff;
   height: 50px;
 }
-.popup__container-save:hover{
+
+.popup__container-save:hover {
   opacity: 80%;
 }
+
 /*********************************************************/
 /*Errores*/
-.popup__input_type_error{
+.popup__input_type_error {
   border-color: red;
 }
-.error{
+
+.error {
   display: block;
   color: red;
   font-size: 12px;
 }
-.error-visible{
+
+.popup__error_visible {
   display: block;
 }
-.popup__button_disabled{
+
+.popup__button_disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
