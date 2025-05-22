@@ -78,7 +78,7 @@ function createCard(card) {
   const btnlikeblack = cloneContent.querySelector(".gallery__card-like-picture")
   const textimg = cloneContent.querySelector(".gallery__card-content-text");
   const contenttext = cloneContent.querySelector(".gallery__card-content");
-  const btnclosedimg =  cloneContent.querySelector(".gallery__img-closed");
+  const btnclosedimg = cloneContent.querySelector(".gallery__img-closed");
 
 
 
@@ -90,7 +90,7 @@ function createCard(card) {
 
   //Hacer grande la foto
 
-  cardImg.addEventListener("click", () =>{
+  cardImg.addEventListener("click", () => {
     //al hacer click se hace mas grande la imagen
     cardImg.classList.add("gallery__card-picture-big");
     //contendor de la imagen mas grande con la spropiedades del texto
@@ -107,27 +107,27 @@ function createCard(card) {
     btnDelete.classList.add("gallery__card-button-delete-hiden");
 
   });
-  btnclosedimg.addEventListener("click", () =>{
-     //al hacer click se hace mas grande la imagen
-     cardImg.classList.remove("gallery__card-picture-big");
-     //contendor de la imagen mas grande con la spropiedades del texto
-     cloneContent.classList.remove("gallery__popup-img");
-     //boton cerrar aparece
-     btnclosedimg.classList.remove("gallery__img-closed-show");
-     //hacer el titulo mas grande y aparecer debajo de la foto
-     textimg.classList.remove("gallery__card-content-text-big");
-     //contenedor del texto
-     contenttext.classList.remove("gallery__card-content-big");
-     //ocultar boton like
-     btnLike.classList.remove("gallery__card-like-button-hiden");
-     //ocultar boton trash
-     btnDelete.classList.remove("gallery__card-button-delete-hiden");
+  btnclosedimg.addEventListener("click", () => {
+    //al hacer click se hace mas grande la imagen
+    cardImg.classList.remove("gallery__card-picture-big");
+    //contendor de la imagen mas grande con la spropiedades del texto
+    cloneContent.classList.remove("gallery__popup-img");
+    //boton cerrar aparece
+    btnclosedimg.classList.remove("gallery__img-closed-show");
+    //hacer el titulo mas grande y aparecer debajo de la foto
+    textimg.classList.remove("gallery__card-content-text-big");
+    //contenedor del texto
+    contenttext.classList.remove("gallery__card-content-big");
+    //ocultar boton like
+    btnLike.classList.remove("gallery__card-like-button-hiden");
+    //ocultar boton trash
+    btnDelete.classList.remove("gallery__card-button-delete-hiden");
 
   });
 
 
   //like
-  btnLike.addEventListener("click", () =>{
+  btnLike.addEventListener("click", () => {
     btnlikeblack.classList.toggle("like");
   });
 
@@ -173,7 +173,7 @@ const addform = document.querySelector("#popup__container-add");
 const inputnameadd = document.querySelector("#popup__input-title");
 const inputimgadd = document.querySelector("#popup__input-imgurl");
 
-function handleSubmit(event){
+function handleSubmit(event) {
   event.preventDefault();
   const newCard = {
     name: inputnameadd.value,
@@ -187,6 +187,8 @@ function handleSubmit(event){
 addform.addEventListener("submit", handleSubmit);
 
 //***************************************************************************************************************** */
+//cerrar popop con esc
+
 //validaciones de inputs
 
 // habilitar la validación llamando a enableValidation()

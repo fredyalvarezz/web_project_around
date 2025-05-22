@@ -1,16 +1,13 @@
 const showError = (input, config) => {
-  const inputElement = document.querySelector('#${input.id}-error');
+  const inputElement = document.querySelector(`#${input.id}-error`);
   inputElement.textContent = input.validationMessage;
   inputElement.classList.add(config.errorClass);
-  inputElement.classList.add(config.inputErrorClass);
 };
 
 const hideError = (input, config) => {
-  const inputElement = document.querySelector('#${input.id}-error');
+  const inputElement = document.querySelector(`#${input.id}-error`);
   inputElement.textContent = "";
   inputElement.classList.remove(config.errorClass);
-  inputElement.classList.remove(config.inputErrorClass);
-
 };
 
 const checkInputValidity = (input, config) => {
@@ -22,16 +19,26 @@ const checkInputValidity = (input, config) => {
   }
 };
 
-//const togglebuttonState = (form, button, config) => {
-
-//}
+const toggleButtonState = (form, button, config) => {
+  const inputs = Array.from(form.querySelectorAll(config.inputSelector));
+  const isValid = inputs.every((input) => input.validity.valid);
+  if (isValid) {
+    button.disabled = false;
+    button.classList.remove(config.inactiveButtonClass);
+  } else {
+    button.disabled = true;
+    button.classList.add(config.inactiveButtonClass);
+  }
+}
 
 const setEventListeners = (form, config) => {
   const inputs = form.querySelectorAll(config.inputSelector);
+  const button = form.querySelector(config.submitButtonSelector);
 
   inputs.forEach((input) => {
     input.addEventListener("input", () => {
       checkInputValidity(input, config);
+      toggleButtonState(form, button, config);
     });
   });
   form.addEventListener("submit", (e) => {
