@@ -116,6 +116,7 @@
   display: block;
   color: red;
   font-size: 12px;
+  margin-left: 20px;
 }
 
 .popup__error_visible {

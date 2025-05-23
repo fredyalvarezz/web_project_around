@@ -9,7 +9,6 @@ const profname = document.querySelector(".profile__info-name");
 const profabout = document.querySelector(".profile__info-details");
 const butsave = document.querySelector("#popup__container-save");
 
-
 //Editar Perfil
 function openedit() {
   inputname.value = profname.textContent;
@@ -93,7 +92,7 @@ function createCard(card) {
   cardImg.addEventListener("click", () => {
     //al hacer click se hace mas grande la imagen
     cardImg.classList.add("gallery__card-picture-big");
-    //contendor de la imagen mas grande con la spropiedades del texto
+    //contendor de la imagen mas grande con las propiedades del texto
     cloneContent.classList.add("gallery__popup-img");
     //boton cerrar aparece
     btnclosedimg.classList.add("gallery__img-closed-show");
@@ -107,23 +106,34 @@ function createCard(card) {
     btnDelete.classList.add("gallery__card-button-delete-hiden");
 
   });
-  btnclosedimg.addEventListener("click", () => {
-    //al hacer click se hace mas grande la imagen
+
+  //cerrra IMG
+  function closedIMG(evt) {
     cardImg.classList.remove("gallery__card-picture-big");
-    //contendor de la imagen mas grande con la spropiedades del texto
+    //contendor de la imagen mas grande con las propiedades del texto
     cloneContent.classList.remove("gallery__popup-img");
-    //boton cerrar aparece
+    //boton cerrar desaparece
     btnclosedimg.classList.remove("gallery__img-closed-show");
     //hacer el titulo mas grande y aparecer debajo de la foto
     textimg.classList.remove("gallery__card-content-text-big");
     //contenedor del texto
     contenttext.classList.remove("gallery__card-content-big");
-    //ocultar boton like
+    //aparece boton like
     btnLike.classList.remove("gallery__card-like-button-hiden");
-    //ocultar boton trash
+    //aparece boton trash
     btnDelete.classList.remove("gallery__card-button-delete-hiden");
 
-  });
+  }
+  btnclosedimg.addEventListener("click", closedIMG);
+
+  //cerrar img con click en la superposición
+document.addEventListener("click", function(evt){
+  const imgPopup = evt.target.classList;
+  if(imgPopup.contains("gallery__popup-img")){
+   closedIMG();
+
+  }
+});
 
 
   //like
@@ -152,7 +162,6 @@ function renderCards() {
   });
 }
 renderCards();
-
 
 
 
@@ -187,7 +196,42 @@ function handleSubmit(event) {
 addform.addEventListener("submit", handleSubmit);
 
 //***************************************************************************************************************** */
-//cerrar popop con esc
+//cerrar popup con esc
+function closePopupEsc(evt) {
+  if (evt === "Escape" || evt.keyCode === 27) {
+    popup.classList.remove("popup__opened");
+    popupadd.classList.remove("popup__opened");
+    //alert("Esc presionado");
+  }
+
+};
+document.addEventListener("keydown", closePopupEsc);
+
+
+
+//cerrar popup info con click fuera del form
+function closePopupClick(evt) {
+  if (evt.target === popup) {
+    popup.classList.remove("popup__opened");
+    //alert("click fuera del popup");
+  }
+
+}
+popup.addEventListener("click", closePopupClick);
+
+//cerrra popup add img
+function closePopupaddClick(evt) {
+  if (evt.target === popupadd) {
+    popupadd.classList.remove("popup__opened");
+    //alert("click fuera del popup");
+  }
+}
+popupadd.addEventListener("click", closePopupaddClick);
+
+
+
+
+
 
 //validaciones de inputs
 
