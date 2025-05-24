@@ -1,3 +1,22 @@
+//validaciones de inputs
+
+// habilitar la validación llamando a enableValidation()
+// pasar todas las configuraciones en la llamada
+
+
+import { enableValidation } from "./validate.js";
+
+enableValidation({
+  formSelector: ".popup__container",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible"
+});
+import { resetValidation}  from "./validate.js";
+
+
 //Seleccionar elementos del DOM
 const btnedit = document.querySelector(".profile__info-edit-button");
 const popup = document.querySelector("#popup");
@@ -13,10 +32,15 @@ const butsave = document.querySelector("#popup__container-save");
 function openedit() {
   inputname.value = profname.textContent;
   inputabout.value = profabout.textContent;
-  popup.classList.toggle("popup__opened");
+  popup.classList.add("popup__opened");
 }
 btnedit.addEventListener("click", openedit);
-btnclosed.addEventListener("click", openedit);
+function closedpopup(){
+    inputname.value = profname.textContent;
+  inputabout.value = profabout.textContent;
+  popup.classList.remove("popup__opened");
+}
+btnclosed.addEventListener("click", closedpopup);
 
 function savechange(e) {
   e.preventDefault();
@@ -171,10 +195,15 @@ const popupadd = document.querySelector("#popup-add");
 const btnclosedadd = document.querySelector("#popup__button-closed-add");
 
 function openadd() {
-  popupadd.classList.toggle("popup__opened");
+  popupadd.classList.add("popup__opened");
 }
 btnadd.addEventListener("click", openadd);
-btnclosedadd.addEventListener("click", openadd);
+
+function closeadd(){
+  popupadd.classList.remove("popup__opened");
+ resetValidation();
+}
+btnclosedadd.addEventListener("click", closeadd);
 
 
 //agregar nuevas fotos
@@ -233,18 +262,3 @@ popupadd.addEventListener("click", closePopupaddClick);
 
 
 
-//validaciones de inputs
-
-// habilitar la validación llamando a enableValidation()
-// pasar todas las configuraciones en la llamada
-
-import { enableValidation } from "./validate.js";
-
-enableValidation({
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible"
-});

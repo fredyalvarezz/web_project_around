@@ -35,6 +35,8 @@ const setEventListeners = (form, config) => {
   const inputs = form.querySelectorAll(config.inputSelector);
   const button = form.querySelector(config.submitButtonSelector);
 
+  toggleButtonState(form, button, config);
+
   inputs.forEach((input) => {
     input.addEventListener("input", () => {
       checkInputValidity(input, config);
@@ -47,9 +49,25 @@ const setEventListeners = (form, config) => {
 
 };
 
+
+export const resetValidation = () => {
+  const formReset = Array.from(document.querySelectorAll(".popup__container"));
+  formReset.forEach((form) => {
+  form.reset();
+  });
+};
+
 export const enableValidation = (config) => {
   const forms = document.querySelectorAll(config.formSelector);
   forms.forEach((form) => {
     setEventListeners(form, config);
   });
 };
+
+
+
+
+
+
+
+
