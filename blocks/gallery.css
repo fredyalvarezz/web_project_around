@@ -1,6 +1,6 @@
 .gallery {
   max-width: 880px;
-    height: 100vh;
+  height: 100vh;
   margin: 50px auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -199,9 +199,10 @@
   .gallery__card-content-text-big {
     max-width: 700px;
   }
+
   .gallery__img-closed-show {
-  max-width: 720px;
-}
+    max-width: 720px;
+  }
 }
 
 
