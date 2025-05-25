@@ -14,41 +14,42 @@ enableValidation({
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible"
 });
-import { resetValidation}  from "./validate.js";
+import { resetValidation } from "./validate.js";
 
 
 //Seleccionar elementos del DOM
-const btnedit = document.querySelector(".profile__info-edit-button");
+const buttonEdit = document.querySelector(".profile__info-edit-button");
 const popup = document.querySelector("#popup");
-const btnclosed = document.querySelector("#popup__button-closed");
+const buttonClosed = document.querySelector("#popup__button-closed");
 const form = document.querySelector("#popup__container");
-const inputname = document.querySelector("#popup__input-name");
-const inputabout = document.querySelector("#popup__input-about");
-const profname = document.querySelector(".profile__info-name");
-const profabout = document.querySelector(".profile__info-details");
-const butsave = document.querySelector("#popup__container-save");
+const inputName = document.querySelector("#popup__input-name");
+const inputAbout = document.querySelector("#popup__input-about");
+const profileName = document.querySelector(".profile__info-name");
+const profileAbout = document.querySelector(".profile__info-details");
+const buttonSave = document.querySelector("#popup__container-save");
 
 //Editar Perfil
-function openedit() {
-  inputname.value = profname.textContent;
-  inputabout.value = profabout.textContent;
+function openEdit() {
+  inputName.value = profileName.textContent;
+  inputAbout.value = profileAbout.textContent;
   popup.classList.add("popup__opened");
 }
-btnedit.addEventListener("click", openedit);
-function closedpopup(){
-    inputname.value = profname.textContent;
-  inputabout.value = profabout.textContent;
+buttonEdit.addEventListener("click", openEdit);
+
+function closedPopup() {
+  inputName.value = profileName.textContent;
+  inputAbout.value = profileAbout.textContent;
   popup.classList.remove("popup__opened");
 }
-btnclosed.addEventListener("click", closedpopup);
+buttonClosed.addEventListener("click", closedPopup);
 
-function savechange(e) {
+function saveChange(e) {
   e.preventDefault();
-  profname.textContent = inputname.value;
-  profabout.textContent = inputabout.value;
-  openedit();
+  profileName.textContent = inputName.value;
+  profileAbout.textContent = inputAbout.value;
+  closedPopup();
 }
-form.addEventListener("submit", savechange);
+form.addEventListener("submit", saveChange);
 
 
 //-----------------------------------------------------------------------------------------------------------------
@@ -83,7 +84,7 @@ const initialCards = [
 //crear la foto
 
 //seleccionar elementos del DOM
-const galleryzone = document.querySelector("#galleryzone");
+const galleryZone = document.querySelector("#galleryzone");
 const galleryTemplate = document.querySelector("#gallery-template");
 
 
@@ -94,14 +95,14 @@ function createCard(card) {
   const cloneContent = cloneCard.querySelector(".gallery__card");
 
   //Seleccionar elementos del DOM
-  const btnDelete = cloneContent.querySelector(".gallery__card-button-delete");
+  const buttonDelete = cloneContent.querySelector(".gallery__card-button-delete");
   const cardImg = cloneContent.querySelector(".gallery__card-picture");
   const cardName = cloneContent.querySelector(".gallery__card-content-text");
-  const btnLike = cloneContent.querySelector(".gallery__card-like-button");
-  const btnlikeblack = cloneContent.querySelector(".gallery__card-like-picture")
-  const textimg = cloneContent.querySelector(".gallery__card-content-text");
-  const contenttext = cloneContent.querySelector(".gallery__card-content");
-  const btnclosedimg = cloneContent.querySelector(".gallery__img-closed");
+  const buttonLike = cloneContent.querySelector(".gallery__card-like-button");
+  const buttonLikeBlack = cloneContent.querySelector(".gallery__card-like-picture")
+  const textImg = cloneContent.querySelector(".gallery__card-content-text");
+  const contentText = cloneContent.querySelector(".gallery__card-content");
+  const buttonClosedImg = cloneContent.querySelector(".gallery__img-closed");
 
 
 
@@ -119,57 +120,56 @@ function createCard(card) {
     //contendor de la imagen mas grande con las propiedades del texto
     cloneContent.classList.add("gallery__popup-img");
     //boton cerrar aparece
-    btnclosedimg.classList.add("gallery__img-closed-show");
+    buttonClosedImg.classList.add("gallery__img-closed-show");
     //hacer el titulo mas grande y aparecer debajo de la foto
-    textimg.classList.add("gallery__card-content-text-big");
+    textImg.classList.add("gallery__card-content-text-big");
     //contenedor del texto
-    contenttext.classList.add("gallery__card-content-big");
+    contentText.classList.add("gallery__card-content-big");
     //ocultar boton like
-    btnLike.classList.add("gallery__card-like-button-hiden");
+    buttonLike.classList.add("gallery__card-like-button-hiden");
     //ocultar boton trash
-    btnDelete.classList.add("gallery__card-button-delete-hiden");
+    buttonDelete.classList.add("gallery__card-button-delete-hiden");
 
   });
 
   //cerrra IMG
-  function closedIMG(evt) {
+  function closedImg(evt) {
     cardImg.classList.remove("gallery__card-picture-big");
     //contendor de la imagen mas grande con las propiedades del texto
     cloneContent.classList.remove("gallery__popup-img");
     //boton cerrar desaparece
-    btnclosedimg.classList.remove("gallery__img-closed-show");
+    buttonClosedImg.classList.remove("gallery__img-closed-show");
     //hacer el titulo mas grande y aparecer debajo de la foto
-    textimg.classList.remove("gallery__card-content-text-big");
+    textImg.classList.remove("gallery__card-content-text-big");
     //contenedor del texto
-    contenttext.classList.remove("gallery__card-content-big");
+    contentText.classList.remove("gallery__card-content-big");
     //aparece boton like
-    btnLike.classList.remove("gallery__card-like-button-hiden");
+    buttonLike.classList.remove("gallery__card-like-button-hiden");
     //aparece boton trash
-    btnDelete.classList.remove("gallery__card-button-delete-hiden");
+    buttonDelete.classList.remove("gallery__card-button-delete-hiden");
 
   }
-  btnclosedimg.addEventListener("click", closedIMG);
+  buttonClosedImg.addEventListener("click", closedImg);
 
   //cerrar img con click en la superposición
-document.addEventListener("click", function(evt){
-  const imgPopup = evt.target.classList;
-  if(imgPopup.contains("gallery__popup-img")){
-   closedIMG();
-
-  }
-});
+  document.addEventListener("click", function (evt) {
+    const imgPopup = evt.target.classList;
+    if (imgPopup.contains("gallery__popup-img")) {
+      closedImg();
+    }
+  });
 
 
   //like
-  btnLike.addEventListener("click", () => {
-    btnlikeblack.classList.toggle("like");
+  buttonLike.addEventListener("click", () => {
+    buttonLikeBlack.classList.toggle("like");
   });
 
 
 
 
   //Eliminar Card seleccionada
-  btnDelete.addEventListener("click", () => {
+  buttonDelete.addEventListener("click", () => {
     cloneContent.remove();
   });
   return cloneContent;
@@ -182,7 +182,7 @@ document.addEventListener("click", function(evt){
 function renderCards() {
   initialCards.forEach((card) => {
     const Cardclone = createCard(card);
-    galleryzone.appendChild(Cardclone);
+    galleryZone.appendChild(Cardclone);
   });
 }
 renderCards();
@@ -190,46 +190,46 @@ renderCards();
 
 
 //Abrir agregar nuevos lugares
-const btnadd = document.querySelector(".profile__info-add-button");
-const popupadd = document.querySelector("#popup-add");
-const btnclosedadd = document.querySelector("#popup__button-closed-add");
+const buttonAdd = document.querySelector(".profile__info-add-button");
+const popupAdd = document.querySelector("#popup-add");
+const buttonClosedAdd = document.querySelector("#popup__button-closed-add");
 
-function openadd() {
-  popupadd.classList.add("popup__opened");
+function openAdd() {
+  popupAdd.classList.add("popup__opened");
 }
-btnadd.addEventListener("click", openadd);
+buttonAdd.addEventListener("click", openAdd);
 
-function closeadd(){
-  popupadd.classList.remove("popup__opened");
- resetValidation();
+function closedAdd() {
+  popupAdd.classList.remove("popup__opened");
+  resetValidation();
 }
-btnclosedadd.addEventListener("click", closeadd);
+buttonClosedAdd.addEventListener("click", closedAdd);
 
 
 //agregar nuevas fotos
-const addform = document.querySelector("#popup__container-add");
-const inputnameadd = document.querySelector("#popup__input-title");
-const inputimgadd = document.querySelector("#popup__input-imgurl");
+const addForm = document.querySelector("#popup__container-add");
+const inputNameAdd = document.querySelector("#popup__input-title");
+const inputImgAdd = document.querySelector("#popup__input-imgurl");
 
 function handleSubmit(event) {
   event.preventDefault();
   const newCard = {
-    name: inputnameadd.value,
-    link: inputimgadd.value,
+    name: inputNameAdd.value,
+    link: inputImgAdd.value,
   }
   const Cardclone = createCard(newCard);
-  galleryzone.prepend(Cardclone);
-  openadd();
-  addform.reset();
+  galleryZone.prepend(Cardclone);
+  openAdd();
+  addForm.reset();
 }
-addform.addEventListener("submit", handleSubmit);
+addForm.addEventListener("submit", handleSubmit);
 
 //***************************************************************************************************************** */
 //cerrar popup con esc
 function closePopupEsc(evt) {
   if (evt === "Escape" || evt.keyCode === 27) {
     popup.classList.remove("popup__opened");
-    popupadd.classList.remove("popup__opened");
+    popupAdd.classList.remove("popup__opened");
     //alert("Esc presionado");
   }
 
@@ -249,13 +249,13 @@ function closePopupClick(evt) {
 popup.addEventListener("click", closePopupClick);
 
 //cerrra popup add img
-function closePopupaddClick(evt) {
-  if (evt.target === popupadd) {
-    popupadd.classList.remove("popup__opened");
+function closePopupAddClick(evt) {
+  if (evt.target === popupAdd) {
+    popupAdd.classList.remove("popup__opened");
     //alert("click fuera del popup");
   }
 }
-popupadd.addEventListener("click", closePopupaddClick);
+popupAdd.addEventListener("click", closePopupAddClick);
 
 
 
