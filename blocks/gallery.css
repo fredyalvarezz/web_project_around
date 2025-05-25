@@ -1,6 +1,5 @@
 .gallery {
   max-width: 880px;
-  height: 100vh;
   margin: 50px auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -411,6 +410,7 @@
   }
 
   .gallery__card {
+    width: 300px;
     height: 361px;
     margin: auto;
   }
