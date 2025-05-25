@@ -188,6 +188,7 @@ function renderCards() {
 renderCards();
 
 
+//************************************************************************************************************//
 
 //Abrir agregar nuevos lugares
 const buttonAdd = document.querySelector(".profile__info-add-button");
@@ -219,7 +220,7 @@ function handleSubmit(event) {
   }
   const Cardclone = createCard(newCard);
   galleryZone.prepend(Cardclone);
-  openAdd();
+  closedAdd();
   addForm.reset();
 }
 addForm.addEventListener("submit", handleSubmit);
