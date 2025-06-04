@@ -4,9 +4,9 @@
 // pasar todas las configuraciones en la llamada
 
 
-import { enableValidation } from "./validate.js";
+import { FormValidator } from "./validate.js";
 
-enableValidation({
+const config = ({
   formSelector: ".popup__container",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button",
@@ -14,7 +14,10 @@ enableValidation({
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible"
 });
-import { resetValidation } from "./validate.js";
+
+const validator = new FormValidator(config);
+validator.enableValidation();
+
 
 
 //Seleccionar elementos del DOM

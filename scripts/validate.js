@@ -1,73 +1,94 @@
-const showError = (input, config) => {
-  const inputElement = document.querySelector(`#${input.id}-error`);
-  inputElement.textContent = input.validationMessage;
-  inputElement.classList.add(config.errorClass);
-};
-
-const hideError = (input, config) => {
-  const inputElement = document.querySelector(`#${input.id}-error`);
-  inputElement.textContent = "";
-  inputElement.classList.remove(config.errorClass);
-};
-
-const checkInputValidity = (input, config) => {
-  if (input.validity.valid) {
-    hideError(input, config);
-
-  } else {
-    showError(input, config);
+export class FormValidator {
+  constructor(config) {
+    this._config = config;
   }
-};
 
-const toggleButtonState = (form, button, config) => {
-  const inputs = Array.from(form.querySelectorAll(config.inputSelector));
-  const isValid = inputs.every((input) => input.validity.valid);
-  if (isValid) {
-    button.disabled = false;
-    button.classList.remove(config.inactiveButtonClass);
-  } else {
-    button.disabled = true;
-    button.classList.add(config.inactiveButtonClass);
+  _showError(input) {
+    const inputElement = document.querySelector(`#${input.id}-error`);
+    inputElement.textContent = input.validationMessage;
+    inputElement.classList.add(this._config.errorClass);
   }
-}
 
-const setEventListeners = (form, config) => {
-  const inputs = form.querySelectorAll(config.inputSelector);
-  const button = form.querySelector(config.submitButtonSelector);
+  _hideError(input) {
+    const inputElement = document.querySelector(`#${input.id}-error`);
+    inputElement.textContent = "";
+    inputElement.classList.remove(this._config.errorClass);
+  }
 
-  toggleButtonState(form, button, config);
+  _checkInputValidity(input) {
+    if (input.validity.valid) {
+      this._hideError(input);
 
-  inputs.forEach((input) => {
-    input.addEventListener("input", () => {
-      checkInputValidity(input, config);
-      toggleButtonState(form, button, config);
+    } else {
+      this._showError(input);
+    }
+  }
+
+  _toggleButtonState(form, button) {
+    const inputs = Array.from(form.querySelectorAll(this._config.inputSelector));
+    const isValid = inputs.every((input) => input.validity.valid);
+
+    if (isValid) {
+      button.disabled = false;
+      button.classList.remove(this._config.inactiveButtonClass);
+    } else {
+      button.disabled = true;
+      button.classList.add(this._config.inactiveButtonClass);
+    }
+  }
+
+  _setEventListeners(form) {
+    const inputs = form.querySelectorAll(this._config.inputSelector);
+    const button = form.querySelector(this._config.submitButtonSelector);
+
+    this._toggleButtonState(form, button);
+
+    inputs.forEach((input) => {
+      input.addEventListener("input", () => {
+        this._checkInputValidity(input);
+        this._toggleButtonState(form, button);
+      });
     });
-  });
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-  });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+    });
+
+  };
+
+
+  static resetValidation() {
+    const formReset = Array.from(document.querySelectorAll(".popup__container"));
+    formReset.forEach((form) => {
+      form.reset();
+    });
+  };
+
+  enableValidation() {
+    const forms = document.querySelectorAll(this._config.formSelector);
+    forms.forEach((form) => {
+      this._setEventListeners(form);
+    });
+  };
 
 };
 
 
-export const resetValidation = () => {
-  const formReset = Array.from(document.querySelectorAll(".popup__container"));
-  formReset.forEach((form) => {
-  form.reset();
-  });
-};
-
-export const enableValidation = (config) => {
-  const forms = document.querySelectorAll(config.formSelector);
-  forms.forEach((form) => {
-    setEventListeners(form, config);
-  });
-};
 
 
+//Cómo usarla:
+//js
+//Copiar código
+//const config = {
+//formSelector: '.form',
+//inputSelector: '.form__input',
+//submitButtonSelector: '.form__submit',
+//inactiveButtonClass: 'form__submit_disabled',
+//errorClass: 'form__input-error_visible'
+//};
 
+//const validator = new FormValidator(config);
+//validator.enableValidation();
 
-
-
-
-
+// Para resetear todos los formularios
+//FormValidator.resetValidation();
