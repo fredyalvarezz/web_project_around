@@ -57,12 +57,6 @@ export class FormValidator {
   };
 
 
-  static resetValidation() {
-    const formReset = Array.from(document.querySelectorAll(".popup__container"));
-    formReset.forEach((form) => {
-      form.reset();
-    });
-  };
 
   enableValidation() {
     const forms = document.querySelectorAll(this._config.formSelector);
@@ -71,24 +65,14 @@ export class FormValidator {
     });
   };
 
+
+  static resetValidation() {
+    const formReset = Array.from(document.querySelectorAll(".popup__container"));
+    formReset.forEach((form) => {
+      form.reset();
+    });
+  }
 };
 
 
 
-
-//Cómo usarla:
-//js
-//Copiar código
-//const config = {
-//formSelector: '.form',
-//inputSelector: '.form__input',
-//submitButtonSelector: '.form__submit',
-//inactiveButtonClass: 'form__submit_disabled',
-//errorClass: 'form__input-error_visible'
-//};
-
-//const validator = new FormValidator(config);
-//validator.enableValidation();
-
-// Para resetear todos los formularios
-//FormValidator.resetValidation();

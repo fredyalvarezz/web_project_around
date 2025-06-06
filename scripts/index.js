@@ -2,21 +2,69 @@
 
 // habilitar la validación llamando a enableValidation()
 // pasar todas las configuraciones en la llamada
+//llamar con la clase y la subclase
 
 
-import { FormValidator } from "./validate.js";
+import { FormValidator } from "./FormValidator.js";
 
-const config = ({
+const config = {
   formSelector: ".popup__container",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button",
   inactiveButtonClass: "popup__button_disabled",
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible"
-});
+};
 
 const validator = new FormValidator(config);
 validator.enableValidation();
+
+
+//*******************************************************************************************************************
+//Cards
+const initialCards = [
+  {
+    name: "Valle de Yosemite",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg"
+  },
+  {
+    name: "Lago Louise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg"
+  },
+  {
+    name: "Montañas Calvas",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg"
+  },
+  {
+    name: "Latemar",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg"
+  },
+  {
+    name: "Parque Nacional de la Vanoise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg"
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
+  }
+];
+
+import { Card } from "./Card.js";
+//import {ImagePopup} from "./utils.js";
+const galleryZone = document.querySelector("#galleryzone");
+//const imagePopup = new ImagePopup();
+
+initialCards.forEach(cardData => {
+  const card = new Card(cardData, "#gallery-template", /*imagePopup*/);
+  const cardElement = card.getCardElement();
+  galleryZone.appendChild(cardElement);
+});
+
+//******************************************************************************************************
+
+//Eventos
+
+
 
 
 
@@ -57,138 +105,6 @@ form.addEventListener("submit", saveChange);
 
 //-----------------------------------------------------------------------------------------------------------------
 //array de fotos
-const initialCards = [
-  {
-    name: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg"
-  },
-  {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg"
-  },
-  {
-    name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg"
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg"
-  },
-  {
-    name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg"
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
-  }
-];
-
-//crear la foto
-
-//seleccionar elementos del DOM
-const galleryZone = document.querySelector("#galleryzone");
-const galleryTemplate = document.querySelector("#gallery-template");
-
-
-//crear una card (Singular)
-function createCard(card) {
-  //clonar el template
-  const cloneCard = galleryTemplate.content.cloneNode(true);
-  const cloneContent = cloneCard.querySelector(".gallery__card");
-
-  //Seleccionar elementos del DOM
-  const buttonDelete = cloneContent.querySelector(".gallery__card-button-delete");
-  const cardImg = cloneContent.querySelector(".gallery__card-picture");
-  const cardName = cloneContent.querySelector(".gallery__card-content-text");
-  const buttonLike = cloneContent.querySelector(".gallery__card-like-button");
-  const buttonLikeBlack = cloneContent.querySelector(".gallery__card-like-picture")
-  const textImg = cloneContent.querySelector(".gallery__card-content-text");
-  const contentText = cloneContent.querySelector(".gallery__card-content");
-  const buttonClosedImg = cloneContent.querySelector(".gallery__img-closed");
-
-
-
-
-  //manipulacion del DOM
-  cardName.textContent = card.name;
-  cardImg.src = card.link;
-  cardImg.alt = card.name;
-
-  //Hacer grande la foto
-
-  cardImg.addEventListener("click", () => {
-    //al hacer click se hace mas grande la imagen
-    cardImg.classList.add("gallery__card-picture-big");
-    //contendor de la imagen mas grande con las propiedades del texto
-    cloneContent.classList.add("gallery__popup-img");
-    //boton cerrar aparece
-    buttonClosedImg.classList.add("gallery__img-closed-show");
-    //hacer el titulo mas grande y aparecer debajo de la foto
-    textImg.classList.add("gallery__card-content-text-big");
-    //contenedor del texto
-    contentText.classList.add("gallery__card-content-big");
-    //ocultar boton like
-    buttonLike.classList.add("gallery__card-like-button-hiden");
-    //ocultar boton trash
-    buttonDelete.classList.add("gallery__card-button-delete-hiden");
-
-  });
-
-  //cerrra IMG
-  function closedImg(evt) {
-    cardImg.classList.remove("gallery__card-picture-big");
-    //contendor de la imagen mas grande con las propiedades del texto
-    cloneContent.classList.remove("gallery__popup-img");
-    //boton cerrar desaparece
-    buttonClosedImg.classList.remove("gallery__img-closed-show");
-    //hacer el titulo mas grande y aparecer debajo de la foto
-    textImg.classList.remove("gallery__card-content-text-big");
-    //contenedor del texto
-    contentText.classList.remove("gallery__card-content-big");
-    //aparece boton like
-    buttonLike.classList.remove("gallery__card-like-button-hiden");
-    //aparece boton trash
-    buttonDelete.classList.remove("gallery__card-button-delete-hiden");
-
-  }
-  buttonClosedImg.addEventListener("click", closedImg);
-
-  //cerrar img con click en la superposición
-  document.addEventListener("click", function (evt) {
-    const imgPopup = evt.target.classList;
-    if (imgPopup.contains("gallery__popup-img")) {
-      closedImg();
-    }
-  });
-
-
-  //like
-  buttonLike.addEventListener("click", () => {
-    buttonLikeBlack.classList.toggle("like");
-  });
-
-
-
-
-  //Eliminar Card seleccionada
-  buttonDelete.addEventListener("click", () => {
-    cloneContent.remove();
-  });
-  return cloneContent;
-}
-
-
-//foreach
-//Renders de las cartas para que aparezcan
-//Definicion de la funcion
-function renderCards() {
-  initialCards.forEach((card) => {
-    const Cardclone = createCard(card);
-    galleryZone.appendChild(Cardclone);
-  });
-}
-renderCards();
 
 
 //************************************************************************************************************//
@@ -205,7 +121,7 @@ buttonAdd.addEventListener("click", openAdd);
 
 function closedAdd() {
   popupAdd.classList.remove("popup__opened");
-  resetValidation();
+  FormValidator.resetValidation();
 }
 buttonClosedAdd.addEventListener("click", closedAdd);
 
