@@ -89,21 +89,28 @@ export function closePopupEsc(evt) {
   if (evt === "Escape" || evt.keyCode === 27) {
     popup.classList.remove("popup__opened");
     popupAdd.classList.remove("popup__opened");
+    addForm.reset();
+    profileFormValidator.resetValidation();
+    addFormValidator.resetValidation();
     //alert("Esc presionado");
   }
 };
 
 export function closePopupClick(evt) {
-  if (evt.target === popup) {
+  if (evt.target === popup ) {
     popup.classList.remove("popup__opened");
+    popupAdd.classList.remove("popup__opened");
+    profileFormValidator.resetValidation();
     //alert("click fuera del popup");
   }
 }
 
-//close popup add img
+//close popup add
 export function closePopupAddClick(evt) {
   if (evt.target === popupAdd) {
     popupAdd.classList.remove("popup__opened");
+    addForm.reset();
+    addFormValidator.resetValidation();
     //alert("click fuera del popup");
   }
 }
