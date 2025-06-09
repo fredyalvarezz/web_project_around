@@ -1,6 +1,7 @@
 export class FormValidator {
-  constructor(config) {
+  constructor(config, formElement) {
     this._config = config;
+    this._formElement = formElement;
   }
 
   _showError(input) {
@@ -24,8 +25,8 @@ export class FormValidator {
     }
   }
 
-  _toggleButtonState(form, button) {
-    const inputs = Array.from(form.querySelectorAll(this._config.inputSelector));
+  _toggleButtonState(button) {
+    const inputs = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
     const isValid = inputs.every((input) => input.validity.valid);
 
     if (isValid) {
@@ -37,20 +38,20 @@ export class FormValidator {
     }
   }
 
-  _setEventListeners(form) {
-    const inputs = form.querySelectorAll(this._config.inputSelector);
-    const button = form.querySelector(this._config.submitButtonSelector);
+  _setEventListeners() {
+    const inputs = this._formElement.querySelectorAll(this._config.inputSelector);
+    const button = this._formElement.querySelector(this._config.submitButtonSelector);
 
-    this._toggleButtonState(form, button);
+    this._toggleButtonState(button);
 
     inputs.forEach((input) => {
       input.addEventListener("input", () => {
         this._checkInputValidity(input);
-        this._toggleButtonState(form, button);
+        this._toggleButtonState(button);
       });
     });
 
-    form.addEventListener("submit", (e) => {
+    this._formElement.addEventListener("submit", (e) => {
       e.preventDefault();
     });
 
@@ -59,20 +60,21 @@ export class FormValidator {
 
 
   enableValidation() {
-    const forms = document.querySelectorAll(this._config.formSelector);
-    forms.forEach((form) => {
-      this._setEventListeners(form);
-    });
+    this._setEventListeners();
   };
 
 
-  static resetValidation() {
-    const formReset = Array.from(document.querySelectorAll(".popup__container"));
-    formReset.forEach((form) => {
-      form.reset();
+  resetValidation() {
+    const inputs = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
+    const button = this._formElement.querySelector(this._config.submitButtonSelector);
+
+    inputs.forEach((input) => {
+      this._hideError(input);
     });
-  }
-};
+
+    this._toggleButtonState(button);
+  };
+}
 
 
 

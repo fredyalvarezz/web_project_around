@@ -1,31 +1,104 @@
-export class CardEvents {
-  constructor(cardIntance) {
-    this.card = cardIntance;
+import { FormValidator } from './FormValidator.js';
+import { Card } from './Card.js';
 
-  }
-  handleOpenImage() {
-    this.card._cardImg.classList.add("gallery__card-picture-big");
-    this.card._element.classList.add("gallery__popup-img");
-    this.card._buttonClose.classList.add("gallery__img-closed-show");
-    this.card._cardName.classList.add("gallery__card-content-text-big");
-    this.card._cardTextContainer.classList.add("gallery__card-content-big");
-    this.card._buttonLike.classList.add("gallery__card-like-button-hiden");
-    this.card._buttonDelete.classList.add("gallery__card-button-delete-hiden");
-  }
 
-  handleCloseImage() {
-    this.card._cardImg.classList.remove("gallery__card-picture-big");
-    this.card._element.classList.remove("gallery__popup-img");
-    this.card._buttonClose.classList.remove("gallery__img-closed-show");
-    this.card._cardName.classList.remove("gallery__card-content-text-big");
-    this.card._cardTextContainer.classList.remove("gallery__card-content-big");
-    this.card._buttonLike.classList.remove("gallery__card-like-button-hiden");
-    this.card._buttonDelete.classList.remove("gallery__card-button-delete-hiden");
-  }
+const validationConfig = {
+  formSelector: ".popup__container",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  errorClass: "popup__input-error_active"
+};
 
-  handleOverlayClick(evt) {
-    if (evt.target.classList.contains("gallery__popup-img")) {
-      this.handleCloseImage();
-    }
+
+const addForm = document.querySelector("#popup__container-add");
+
+const addFormValidator = new FormValidator(validationConfig, addForm);
+addFormValidator.enableValidation();
+
+
+//Form edit profile
+const popup = document.querySelector("#popup");
+const inputName = document.querySelector("#popup__input-name");
+const inputAbout = document.querySelector("#popup__input-about");
+const profileName = document.querySelector(".profile__info-name");
+const profileAbout = document.querySelector(".profile__info-details");
+
+
+export function handleOpenEdit() {
+  inputName.value = profileName.textContent;
+  inputAbout.value = profileAbout.textContent;
+  popup.classList.add("popup__opened");
+}
+export function handleClosedPopup() {
+  inputName.value = profileName.textContent;
+  inputAbout.value = profileAbout.textContent;
+  popup.classList.remove("popup__opened");
+}
+export function saveChange(e) {
+  e.preventDefault();
+  profileName.textContent = inputName.value;
+  profileAbout.textContent = inputAbout.value;
+  handleClosedPopup();
+}
+
+//Form add nuevos lugares
+const buttonAdd = document.querySelector(".profile__info-add-button");
+const popupAdd = document.querySelector("#popup-add");
+const buttonClosedAdd = document.querySelector("#popup__button-closed-add");
+const inputNameAdd = document.querySelector("#popup__input-title");
+const inputImgAdd = document.querySelector("#popup__input-imgurl");
+const galleryZone = document.querySelector("#galleryzone");
+
+export function openAdd() {
+  popupAdd.classList.add("popup__opened");
+}
+export function closedAdd() {
+  popupAdd.classList.remove("popup__opened");
+  addForm.reset();
+  addFormValidator.resetValidation();
+}
+
+export function handleSubmit(event) {
+  event.preventDefault();
+
+  const newCard = {
+    name: inputNameAdd.value,
+    link: inputImgAdd.value,
+  };
+
+  //Crear nueva instancia de la Card con los datos y el selector del template
+  const card = new Card(newCard, '#gallery-template');
+  const createCard = card.getCardElement();
+
+  //insertar en el DOM
+  galleryZone.prepend(createCard);
+
+  //cerrar popup y resetear formulario
+  closedAdd();
+  addForm.reset();
+}
+
+//cerrra popup
+export function closePopupEsc(evt) {
+  if (evt === "Escape" || evt.keyCode === 27) {
+    popup.classList.remove("popup__opened");
+    popupAdd.classList.remove("popup__opened");
+    //alert("Esc presionado");
+  }
+};
+
+export function closePopupClick(evt) {
+  if (evt.target === popup) {
+    popup.classList.remove("popup__opened");
+    //alert("click fuera del popup");
+  }
+}
+
+//close popup add img
+export function closePopupAddClick(evt) {
+  if (evt.target === popupAdd) {
+    popupAdd.classList.remove("popup__opened");
+    //alert("click fuera del popup");
   }
 }

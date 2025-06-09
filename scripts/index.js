@@ -1,12 +1,21 @@
-//validaciones de inputs
-
 // habilitar la validación llamando a enableValidation()
 // pasar todas las configuraciones en la llamada
 //llamar con la clase y la subclase
 
+import { Card } from "./Card.js";
+import {
+  closedAdd,
+  closePopupAddClick,
+  closePopupClick,
+  closePopupEsc,
+  handleClosedPopup,
+  handleOpenEdit,
+  handleSubmit,
+  openAdd,
+  saveChange
+} from "./utils.js";
 
 import { FormValidator } from "./FormValidator.js";
-
 const config = {
   formSelector: ".popup__container",
   inputSelector: ".popup__input",
@@ -16,12 +25,16 @@ const config = {
   errorClass: "popup__error_visible"
 };
 
-const validator = new FormValidator(config);
-validator.enableValidation();
+  const addForm = document.querySelector("#popup__container-add");
+  const addFormValidator = new FormValidator(config, addForm);
+  addFormValidator.enableValidation();
+
+
+
 
 
 //*******************************************************************************************************************
-//Cards
+//Cards array
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -49,22 +62,15 @@ const initialCards = [
   }
 ];
 
-import { Card } from "./Card.js";
-//import {ImagePopup} from "./utils.js";
 const galleryZone = document.querySelector("#galleryzone");
-//const imagePopup = new ImagePopup();
 
 initialCards.forEach(cardData => {
-  const card = new Card(cardData, "#gallery-template", /*imagePopup*/);
+  const card = new Card(cardData, "#gallery-template");
   const cardElement = card.getCardElement();
   galleryZone.appendChild(cardElement);
 });
 
 //******************************************************************************************************
-
-//Eventos
-
-
 
 
 
@@ -73,38 +79,16 @@ const buttonEdit = document.querySelector(".profile__info-edit-button");
 const popup = document.querySelector("#popup");
 const buttonClosed = document.querySelector("#popup__button-closed");
 const form = document.querySelector("#popup__container");
-const inputName = document.querySelector("#popup__input-name");
-const inputAbout = document.querySelector("#popup__input-about");
-const profileName = document.querySelector(".profile__info-name");
-const profileAbout = document.querySelector(".profile__info-details");
-const buttonSave = document.querySelector("#popup__container-save");
 
-//Editar Perfil
-function openEdit() {
-  inputName.value = profileName.textContent;
-  inputAbout.value = profileAbout.textContent;
-  popup.classList.add("popup__opened");
-}
-buttonEdit.addEventListener("click", openEdit);
+//Eventos llamados desde utils.js
 
-function closedPopup() {
-  inputName.value = profileName.textContent;
-  inputAbout.value = profileAbout.textContent;
-  popup.classList.remove("popup__opened");
-}
-buttonClosed.addEventListener("click", closedPopup);
+// form edit profile
+buttonEdit.addEventListener("click", handleOpenEdit);
 
-function saveChange(e) {
-  e.preventDefault();
-  profileName.textContent = inputName.value;
-  profileAbout.textContent = inputAbout.value;
-  closedPopup();
-}
+buttonClosed.addEventListener("click", handleClosedPopup);
+//prevent default de edit profile
 form.addEventListener("submit", saveChange);
 
-
-//-----------------------------------------------------------------------------------------------------------------
-//array de fotos
 
 
 //************************************************************************************************************//
@@ -114,71 +98,26 @@ const buttonAdd = document.querySelector(".profile__info-add-button");
 const popupAdd = document.querySelector("#popup-add");
 const buttonClosedAdd = document.querySelector("#popup__button-closed-add");
 
-function openAdd() {
-  popupAdd.classList.add("popup__opened");
-}
+//Form add nuevos lugares
 buttonAdd.addEventListener("click", openAdd);
 
-function closedAdd() {
-  popupAdd.classList.remove("popup__opened");
-  FormValidator.resetValidation();
-}
 buttonClosedAdd.addEventListener("click", closedAdd);
 
 
 //agregar nuevas fotos
-const addForm = document.querySelector("#popup__container-add");
-const inputNameAdd = document.querySelector("#popup__input-title");
-const inputImgAdd = document.querySelector("#popup__input-imgurl");
 
-function handleSubmit(event) {
-  event.preventDefault();
-  const newCard = {
-    name: inputNameAdd.value,
-    link: inputImgAdd.value,
-  }
-  const Cardclone = createCard(newCard);
-  galleryZone.prepend(Cardclone);
-  closedAdd();
-  addForm.reset();
-}
+
 addForm.addEventListener("submit", handleSubmit);
 
 //***************************************************************************************************************** */
 //cerrar popup con esc
-function closePopupEsc(evt) {
-  if (evt === "Escape" || evt.keyCode === 27) {
-    popup.classList.remove("popup__opened");
-    popupAdd.classList.remove("popup__opened");
-    //alert("Esc presionado");
-  }
-
-};
 document.addEventListener("keydown", closePopupEsc);
 
-
-
 //cerrar popup info con click fuera del form
-function closePopupClick(evt) {
-  if (evt.target === popup) {
-    popup.classList.remove("popup__opened");
-    //alert("click fuera del popup");
-  }
-
-}
 popup.addEventListener("click", closePopupClick);
 
 //cerrra popup add img
-function closePopupAddClick(evt) {
-  if (evt.target === popupAdd) {
-    popupAdd.classList.remove("popup__opened");
-    //alert("click fuera del popup");
-  }
-}
 popupAdd.addEventListener("click", closePopupAddClick);
-
-
-
 
 
 
