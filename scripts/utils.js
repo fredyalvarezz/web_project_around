@@ -10,11 +10,17 @@ const validationConfig = {
   errorClass: "popup__input-error_active"
 };
 
-
+//form add
+// const addForm = document.querySelector(".popup__container");
 const addForm = document.querySelector("#popup__container-add");
 
 const addFormValidator = new FormValidator(validationConfig, addForm);
 addFormValidator.enableValidation();
+
+//form edit
+const profileForm = document.querySelector("#popup__container");
+const profileFormValidator = new FormValidator(validationConfig, profileForm);
+profileFormValidator.enableValidation();
 
 
 //Form edit profile
@@ -34,6 +40,7 @@ export function handleClosedPopup() {
   inputName.value = profileName.textContent;
   inputAbout.value = profileAbout.textContent;
   popup.classList.remove("popup__opened");
+  profileFormValidator.resetValidation();
 }
 export function saveChange(e) {
   e.preventDefault();
@@ -43,9 +50,7 @@ export function saveChange(e) {
 }
 
 //Form add nuevos lugares
-const buttonAdd = document.querySelector(".profile__info-add-button");
 const popupAdd = document.querySelector("#popup-add");
-const buttonClosedAdd = document.querySelector("#popup__button-closed-add");
 const inputNameAdd = document.querySelector("#popup__input-title");
 const inputImgAdd = document.querySelector("#popup__input-imgurl");
 const galleryZone = document.querySelector("#galleryzone");
