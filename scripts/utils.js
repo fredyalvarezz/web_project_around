@@ -12,8 +12,8 @@ const validationConfig = {
 
 //form add
 // const addForm = document.querySelector(".popup__container");
-const addForm = document.querySelector("#popup__container-add");
 
+const addForm = document.querySelector("#popup__container-add");
 const addFormValidator = new FormValidator(validationConfig, addForm);
 addFormValidator.enableValidation();
 

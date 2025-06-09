@@ -1,6 +1,4 @@
-// habilitar la validación llamando a enableValidation()
-// pasar todas las configuraciones en la llamada
-//llamar con la clase y la subclase
+//Importar clases y funciones
 
 import { Card } from "./Card.js";
 import {
@@ -14,21 +12,6 @@ import {
   openAdd,
   saveChange
 } from "./utils.js";
-
-import { FormValidator } from "./FormValidator.js";
-const config = {
-  formSelector: ".popup__container",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible"
-};
-
-  const addForm = document.querySelector("#popup__container-add");
-  const addFormValidator = new FormValidator(config, addForm);
-  addFormValidator.enableValidation();
-
 
 
 
@@ -62,6 +45,8 @@ const initialCards = [
   }
 ];
 
+//creacion de new card add form
+
 const galleryZone = document.querySelector("#galleryzone");
 
 initialCards.forEach(cardData => {
@@ -84,7 +69,6 @@ const form = document.querySelector("#popup__container");
 
 // form edit profile
 buttonEdit.addEventListener("click", handleOpenEdit);
-
 buttonClosed.addEventListener("click", handleClosedPopup);
 //prevent default de edit profile
 form.addEventListener("submit", saveChange);
@@ -97,16 +81,14 @@ form.addEventListener("submit", saveChange);
 const buttonAdd = document.querySelector(".profile__info-add-button");
 const popupAdd = document.querySelector("#popup-add");
 const buttonClosedAdd = document.querySelector("#popup__button-closed-add");
+const addForm = document.querySelector("#popup__container-add");
 
 //Form add nuevos lugares
 buttonAdd.addEventListener("click", openAdd);
-
 buttonClosedAdd.addEventListener("click", closedAdd);
 
 
 //agregar nuevas fotos
-
-
 addForm.addEventListener("submit", handleSubmit);
 
 //***************************************************************************************************************** */
