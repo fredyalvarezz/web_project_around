@@ -1,5 +1,5 @@
-import { createCard, cardSection } from './index.js'; // al inicio de utils.js
-import { editFormValidator, addFormValidator } from './index.js';
+import { createCard, cardSection } from '../pages/index.js'; // al inicio de utils.js
+import { editFormValidator, addFormValidator } from '../pages/index.js';
 
 //Form edit profile
 const popup = document.querySelector("#popup");
