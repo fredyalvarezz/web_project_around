@@ -1,23 +1,43 @@
-//Importar clases y funciones
+import { Card } from './Card.js';
+import { Section } from './Section.js';
+import { PopupWithImage } from './PopupWithImage.js';
+import { PopupWithForm } from './PopupWithForm.js';
+import { FormValidator } from './FormValidator.js';
+import { UserInfo } from './UserInfo.js';
 
-import { Card } from "./Card.js";
-import {
-  closedAdd,
-  closePopupAddClick,
-  closePopupClick,
-  closePopupEsc,
-  handleClosedPopup,
-  handleOpenEdit,
-  handleSubmit,
-  openAdd,
-  saveChange
-} from "./utils.js";
+// Validacion de formularios
+const validationConfig = {
+  formSelector: ".popup__container",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  errorClass: "popup__input-error_active"
+};
+
+// Formulario agregar Cards y Formulario Editar
+const formAdd = document.querySelector("#popup__container-add");
+const formEdit = document.querySelector("#popup__container");
+
+//Instancia a FormValidation para validar el formulario
+export const addFormValidator = new FormValidator(validationConfig, formAdd);
+export const editFormValidator = new FormValidator(validationConfig, formEdit);
+addFormValidator.enableValidation(); //activa la validacion
+editFormValidator.enableValidation();
+
+// Instancias para creacion de las tarjetas
+export function createCard(cardData) {
+  const card = new Card(cardData, "#gallery-template", (name, link) => {
+    imagePopup.open(name, link); //click para hacer grande la imagen
+  });
+  return card.getCardElement(); //Devuelve el elemento DOM de la tarjeta lista para insertarse en la página.
+}
 
 
+// Instancia Popup de Imagen grande
+const imagePopup = new PopupWithImage('#popup-image');
+imagePopup.setEventListeners();
 
-
-//*******************************************************************************************************************
-//Cards array
+// Array de las tarjetas
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -45,61 +65,64 @@ const initialCards = [
   }
 ];
 
-//creacion de new card add form
+//Instancia a CardSection
+export const cardSection = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    const cardElement = createCard(item);
+    cardSection.addItem(cardElement);
+  }
+}, "#galleryzone");
 
-const galleryZone = document.querySelector("#galleryzone");
+cardSection.renderItems();
 
-initialCards.forEach(cardData => {
-  const card = new Card(cardData, "#gallery-template");
-  const cardElement = card.getCardElement();
-  galleryZone.appendChild(cardElement);
+// Popup agregar cards
+const addCardPopup = new PopupWithForm('#popup-add', (formData) => {
+  const newCard = createCard(formData);
+  cardSection.addItem(newCard);
+});
+addCardPopup.setEventListeners();
+
+//UserInfo
+const inputName = document.querySelector("#popup__input-name");
+const inputAbout = document.querySelector("#popup__input-about");
+
+
+// Instancia de UserInfo
+//y toma los valores de name y job del html y los pone en los selector
+const userInfo = new UserInfo({
+  nameSelector: ".profile__info-name",
+  jobSelector: ".profile__info-details",
 });
 
-//******************************************************************************************************
+
+// Instancia del formulario para editar perfil
+const editProfilePopup = new PopupWithForm('#popup', (formData) => {
+  userInfo.setUserInfo({
+    name: formData.name,
+    job: formData.about
+  });
+
+});
+editProfilePopup.setEventListeners();
 
 
 
-//Seleccionar elementos del DOM
-const buttonEdit = document.querySelector(".profile__info-edit-button");
-const popup = document.querySelector("#popup");
-const buttonClosed = document.querySelector("#popup__button-closed");
-const form = document.querySelector("#popup__container");
+// Boton de editar perfil:abrir popup y cargar los datos actuales en los inputs
+const addButton = document.querySelector(".profile__info-add-button");
+const editButton = document.querySelector(".profile__info-edit-button");
 
-//Eventos llamados desde utils.js
+editButton.addEventListener("click", () => {
+  const { name, job } = userInfo.getUserInfo();
+  inputName.value = name;
+  inputAbout.value = job;
+  editFormValidator.resetValidation(); // Limpia errores previos del formulario
+  editProfilePopup.open();
+});
 
-// form edit profile
-buttonEdit.addEventListener("click", handleOpenEdit);
-buttonClosed.addEventListener("click", handleClosedPopup);
-//prevent default de edit profile
-form.addEventListener("submit", saveChange);
-
-
-
-//************************************************************************************************************//
-
-//Abrir agregar nuevos lugares
-const buttonAdd = document.querySelector(".profile__info-add-button");
-const popupAdd = document.querySelector("#popup-add");
-const buttonClosedAdd = document.querySelector("#popup__button-closed-add");
-const addForm = document.querySelector("#popup__container-add");
-
-//Form add nuevos lugares
-buttonAdd.addEventListener("click", openAdd);
-buttonClosedAdd.addEventListener("click", closedAdd);
-
-
-//agregar nuevas fotos
-addForm.addEventListener("submit", handleSubmit);
-
-//***************************************************************************************************************** */
-//cerrar popup con esc
-document.addEventListener("keydown", closePopupEsc);
-
-//cerrar popup info con click fuera del form
-popup.addEventListener("click", closePopupClick);
-
-//cerrra popup add img
-popupAdd.addEventListener("click", closePopupAddClick);
-
-
-
+// Boton agregar nuevas cards: abre popup para agregar cards
+addButton.addEventListener("click", () => {
+  formAdd.reset();
+  addFormValidator.resetValidation();
+  addCardPopup.open();
+});
